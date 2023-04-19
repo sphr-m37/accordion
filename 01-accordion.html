@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .accordion {
+        width: 400px;
+        margin: 50px auto;
+        border: 1px solid gray;
+      }
+
+      .accordion li h3 {
+        padding: 5px;
+        /* background-color: #4444; */
+        margin-bottom: 5px;
+      }
+      .accordion li p {
+        padding: 15px;
+        /* margin: 15px 0; */
+      }
+      .accordion li:first-child h3 {
+        background-color: royalblue;
+        color: white;
+      }
+      .accordion li:not(:first-child) p {
+        display: none;
+      }
+      .accordion li:first-child h3 .plus {
+        display: none;
+      }
+      .accordion li:not(:first-child) h3 .mines {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="accordion">
+      <li>
+        <h3>
+          <i class="plus">+</i>
+          <i class="mines">-</i>
+          this is title 1
+        </h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut in unde
+          natus dolores dolore, enim voluptate, consequatur accusamus illum
+          libero quidem facere nemo et asperiores totam, earum magnam. Alias,
+          vero!
+        </p>
+      </li>
+      <li>
+        <h3>
+          <i class="plus">+</i>
+          <i class="mines">-</i>
+          this is title 2
+        </h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut in unde
+          natus dolores dolore, enim voluptate, consequatur accusamus illum
+          libero quidem facere nemo et asperiores totam, earum magnam. Alias,
+          vero!
+        </p>
+      </li>
+      <li>
+        <h3>
+          <i class="plus">+</i>
+          <i class="mines">-</i>
+          this is title 3
+        </h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut in unde
+          natus dolores dolore, enim voluptate, consequatur accusamus illum
+          libero quidem facere nemo et asperiores totam, earum magnam. Alias,
+          vero!
+        </p>
+      </li>
+    </ul>
+    <ul class="accordion">
+      <li>
+        <h3>this is title 1</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut in unde
+          natus dolores dolore, enim voluptate, consequatur accusamus illum
+          libero quidem facere nemo et asperiores totam, earum magnam. Alias,
+          vero!
+        </p>
+      </li>
+      <li>
+        <h3>this is title 2</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut in unde
+          natus dolores dolore, enim voluptate, consequatur accusamus illum
+          libero quidem facere nemo et asperiores totam, earum magnam. Alias,
+          vero!
+        </p>
+      </li>
+      <li>
+        <h3>this is title 3</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut in unde
+          natus dolores dolore, enim voluptate, consequatur accusamus illum
+          libero quidem facere nemo et asperiores totam, earum magnam. Alias,
+          vero!
+        </p>
+      </li>
+    </ul>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".accordion li h3").click(function () {
+          $(this).css({
+            "background-color": "royalblue",
+            color: "white",
+          });
+          $(this)
+            .parents("li")
+            .siblings()
+            .children("h3")
+            .css({ "background-color": "white", color: "black" });
+          $(this).parent().siblings().children("p").slideUp();
+          $(this).next("p").slideDown();
+
+          $(this)
+            .parent("li")
+            .siblings("li")
+            .children("h3")
+            .children(".plus")
+            .show();
+          $(this)
+            .parent("li")
+            .siblings("li")
+            .children("h3")
+            .next(".mines")
+            .hide();
+          $(this).children(".plus").hide();
+          $(this).children(".mines").show();
+        });
+      });
+    </script>
+  </body>
+</html>
